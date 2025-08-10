@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thabani Mdluli - Full Stack Developer</title>
+  <meta name="description" content="Affordable web development for local businesses by Thabani Mdluli." />
+  <style>
+    /* Reset & basics */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+    }
+    a { color: #0070f3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; border-radius: 6px; }
+    h1, h2, h3 { margin-top: 0; }
+    h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    section { padding: 3rem 1rem; max-width: 1100px; margin: auto; background: white; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
+    .container { max-width: 1100px; margin: auto; padding: 0 1rem; }
+
+    /* Header */
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    header .brand img {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    nav a {
+      margin-left: 1rem;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav a:first-child { margin-left: 0; }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: #0070f3;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    /* Hero */
+    #hero {
+      background: #0070f3;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 1rem auto 0;
+    }
+
+    /* Grid sections */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #fefefe;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .card img {
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    /* Testimonials */
+    .testimonial {
+      border-left: 4px solid #0070f3;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      color: #444;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .testimonial.empty {
+      color: #aaa;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .testimonial strong {
+      font-weight: 700;
+      display: block;
+      margin-top: 0.5rem;
+      color: #222;
+      font-style: normal;
+      text-align: right;
+    }
+
+    /* Pricing table */
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .pricing-card {
+      flex: 1 1 280px;
+      background: #fefefe;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .pricing-card h3 {
+      margin-bottom: 0.5rem;
+      color: #0070f3;
+    }
+    .pricing-card p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .pricing-card .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    /* FAQ */
+    #faq details {
+      background: #fefefe;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #faq details summary {
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Form */
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    form button {
+      width: 100%;
+      padding: 0.7rem;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #005bb5;
+    }
+
+    /* Contact */
+    #contact p, #contact a {
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      text-align: center;
+    }
+    .social-links {
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .social-links a {
+      margin: 0 0.6rem;
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: white;
+      line-height: 36px;
+      font-size: 20px;
+      text-align: center;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .social-links a.email { background: #0070f3; }
+    .social-links a.whatsapp { background: #25D366; }
+    .social-links a.facebook { background: #3b5998; }
+    .social-links a.linkedin { background: #0077b5; }
+
+    .social-links a:hover {
+      filter: brightness(85%);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 0.5rem;
+        width: 100%;
+      }
+      nav a {
+        margin: 0 1rem 0 0;
+      }
+      .pricing-table {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <!-- FontAwesome CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<header class="container" role="banner">
+  <div class="brand" role="img" aria-label="Thabani Mdluli">
+    <img src="https://via.placeholder.com/80" alt="Thabani Mdluli Photo" />
+    <h1>Thabani Mdluli</h1>
+  </div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#blog">Blog</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="hero" role="banner" aria-label="Introduction">
+  <h2>Helping Local Businesses Grow Online</h2>
+  <p>I build affordable, modern, and effective websites tailored to local businesses.</p>
+  <a href="#contact" class="btn">Work With Me</a>
+</section>
+
+<section id="services" aria-labelledby="services-heading">
+  <h2 id="services-heading">Services</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>Custom Business Websites</h3>
+      <p>Responsive, SEO-friendly 1-2 page websites to showcase your business.</p>
+    </div>
+    <div class="card">
+      <h3>E-Commerce Stores</h3>
+      <p>Simple online shops with product listings and easy checkout options.</p>
+    </div>
+    <div class="card">
+      <h3>Website Maintenance & Updates</h3>
+      <p>Keep your website fresh and up-to-date with monthly maintenance.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" aria-labelledby="portfolio-heading">
+  <h2 id="portfolio-heading">Portfolio</h2>
+  <div class="grid-3">
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=Business+Site+1" alt="Business Website 1" />
+      <h3>Business Website 1</h3>
+      <p>A clean, responsive site for a local startup.</p>
+      <a href="https://example1.com" target="_blank" rel="noopener" class="btn">View Site</a>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=E-Commerce+Site" alt="E-Commerce Website" />
+      <h3>E-Commerce Store</h3>
+      <p>Online shop with easy navigation and checkout.</p>
+      <a href="https://example2.com" target="_blank" rel="noopener" class="btn">View Site</a>
+    </div>
+  </div>
+</section>
+
+<section id="blog" aria-labelledby="blog-heading">
+  <h2 id="blog-heading">Affiliate Blog</h2>
+  <div class="grid-3">
+    <article class="card">
+      <h3><a href="why-every-business-needs-a-website.html">Why Every Business Needs a Website</a></h3>
+      <a href="why-every-business-needs-a-website.html">Read More</a>
+    </article>
+    <article class="card">
+      <h3><a href="top-tips-online-business.html">Top Tips Online Business</a></h3>
+      <a href="top-tips-online-business.html">Read More</a>
+    </article>
+  </div>
+</section>
+
+<section id="testimonials" aria-labelledby="testimonials-heading">
+  <h2 id="testimonials-heading">Testimonials</h2>
+  <div class="testimonial empty">No testimonials yet — be the first to share your experience!</div>
+</section>
+
+<section id="services" aria-labelledby="services-heading" style="max-width: 900px; margin: 3rem auto; padding: 0 1rem;">
+  <h2 id="services-heading" style="text-align:center; margin-bottom: 2rem;">Services & Pricing</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem;">
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h3>Basic Website</h3>
+      <p>1-2 page professional website.<br>Responsive design.<br>No hosting or maintenance included.</p>
+      <p><strong>Price: R600</strong></p>
+      <p><em>Delivery in 5-7 days</em></p>
+    </div>
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h3>E-Commerce Website</h3>
+      <p>Small online store setup with product listings and cart.<br>Mobile responsive.<br>No hosting or maintenance included.</p>
+      <p><strong>Price: R900</strong></p>
+      <p><em>Delivery in 5-7 days</em></p>
+    </div>
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h3>Website + Hosting + 3 Months Free Maintenance</h3>
+      <p>Up to 5 page website.<br>Hosting included for 3 months.<br>Free updates, backups, and security for 3 months.</p>
+      <p><strong>Price: R1,500</strong></p>
+      <p><em>Delivery in 5-7 days</em></p>
+    </div>
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h3>Monthly Maintenance</h3>
+      <p>Ongoing website support and updates after free maintenance period.<br>Backups and security included.</p>
+      <p><strong>Price: R150/month</strong></p>
+      <p><em>Optional after 3 months free maintenance</em></p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Frequently Asked Questions</h2>
+  <details>
+    <summary>How long does it take to build a website?</summary>
+    <p>Typically 5 to 7 days, depending on the complexity and requirements.</p>
+  </details>
+  <details>
+    <summary>Do you offer maintenance packages?</summary>
+    <p>Yes, monthly maintenance is available for R150/month, with the first month free if you purchase a package.</p>
+  </details>
+</section>
+
+<section id="feedback" aria-labelledby="feedback-heading" style="background:#fff; padding:2rem; border-radius:10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width:600px; margin: 3rem auto;">
+  <h2 id="feedback-heading">Leave Your Feedback</h2>
+  <form action="https://formsubmit.co/thaboht36@gmail.com" method="POST" novalidate>
+    <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+    <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+    <textarea name="message" rows="5" placeholder="Your Feedback" required aria-required="true"></textarea>
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="thank-you.html" />
+    <button type="submit" class="btn" aria-label="Submit Feedback">Submit Feedback</button>
+  </form>
+</section>
+
+<section id="contact" aria-labelledby="contact-heading" style="text-align:center; padding-bottom:3rem;">
+  <h2 id="contact-heading">Contact Me</h2>
+  <p>You can reach me through any of these channels:</p>
+  
+  <div class="social-links" aria-label="Social Media Links" style="margin-bottom: 1.5rem;">
+    <a href="mailto:thaboht36@gmail.com" aria-label="Email" class="email"><i class="fas fa-envelope"></i></a>
+    <a href="https://wa.me/27737181506" target="_blank" rel="noopener" aria-label="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://web.facebook.com/thabani.mdluli.123483/" target="_blank" rel="noopener" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.linkedin.com/in/thabani-mdluli-b6233a137/?originalSubdomain=za" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+  
+  <p><strong>Email:</strong> <a href="mailto:thaboht36@gmail.com">thaboht36@gmail.com</a></p>
+  <p><strong>WhatsApp:</strong> <a href="https://wa.me/27737181506" target="_blank" rel="noopener">+27 73 718 1506</a></p>
+  <p><strong>Facebook:</strong> <a href="https://web.facebook.com/thabani.mdluli.123483/" target="_blank" rel="noopener">Thabani Mdluli</a></p>
+  <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/thabani-mdluli-b6233a137/?originalSubdomain=za" target="_blank" rel="noopener">Thabani Mdluli</a></p>
+</section>
+
+<section id="location" aria-label="Location map" style="text-align:center; padding-bottom:3rem;">
+  <h2>My Location</h2>
+  <iframe
+    title="Google Map location of Thabani Mdluli"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14303.944843140324!2d28.321083199999993!3d-26.21831205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sza!4v1691651722169!5m2!1sen!2sza"
+    width="100%"
+    height="350"
+    style="border:0; border-radius: 10px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer style="text-align:center; padding: 1rem 0; background:#222; color:white;">
+  &copy; 2025 Thabani Mdluli. All rights reserved.
+</footer>
+
+</body>
+</html>
+
+
